@@ -39,3 +39,35 @@ The architecture consists of the following components:
 
 ## Folder Structure
 
+```bash
+trila-infra/
+├── environments/
+│   └── dev/
+│       └── vpc.tfvars
+├── infra/
+│   ├── acm/                  # AWS Certificate Manager configs
+│   ├── backend/              # Terraform backend configuration
+│   ├── ec2/                  # EC2 instance definitions
+│   ├── eks-cluster/          # Kubernetes cluster setup
+│   ├── iam-policies/         # Identity and access management
+│   ├── rds/                  # Database configurations
+│   ├── route53/              # DNS configurations
+│   ├── ses/                  # Simple Email Service
+│   ├── sg/                   # Security Groups
+│   ├── tag-policy/           # Resource tagging policies
+│   └── vpc/                  # Virtual Private Cloud setup
+├── modules/
+│   ├── acm/                  # Reusable Certificate Manager module
+│   ├── alb/                  # Application Load Balancer module
+│   ├── asg/                  # Auto Scaling Group module
+│   ├── cloudwatch/           # Monitoring module
+│   ├── ec2/                  # Reusable EC2 module
+│   ├── eks/                  # Reusable EKS module
+│   ├── iam-policy/           # IAM policy module
+│   ├── rds/                  # Database module
+│   └── route53/              # DNS module
+├── main.tf                   # Main Terraform configuration
+├── variables.tf              # Input variables
+├── outputs.tf                # Output definitions
+└── route-tables.tf           # Network routing configuration
+```
