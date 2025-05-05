@@ -365,3 +365,26 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+## 🛠️ Troubleshooting
+
+### AWS Credentials Error
+
+Error: NoCredentialProviders: no valid providers in chain
+
+
+**Solution**:  
+Run `aws configure` or set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as environment variables.
+
+---
+
+### Terraform State Locking
+
+Error: Error acquiring the state lock
+
+
+**Solution**:  
+Ensure no other Terraform process is running. If stuck, use:
+
+```bash
+terraform force-unlock [LOCK_ID]
