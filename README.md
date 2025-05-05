@@ -229,3 +229,139 @@ Reinitialize the backend:
 ```bash
 terraform init -reconfigure
 ```
+# Trila Terraform Infrastructure
+
+This repository manages the infrastructure for the **Trila** project using Terraform. It supports multiple environments such as `dev`, `staging`, and `prod`.
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Set up the required environment variables before running Terraform:
+
+```bash
+# Required
+export TF_VAR_environment=dev         # Options: dev, staging, prod
+export TF_VAR_aws_region=us-east-1
+
+# Optional
+export TF_VAR_vpc_cidr="10.0.0.0/16"
+export TF_VAR_project="trila"
+
+### Configuration Files
+
+Create or update environment-specific variable files under `environments/{env}/`.
+
+Example: `environments/dev/vpc.tfvars`
+
+```hcl
+project          = "trila"
+environment      = "dev"
+vpc_cidr         = "10.0.0.0/16"
+azs              = ["us-east-1a", "us-east-1b", "us-east-1c"]
+public_subnets   = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+private_subnets  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+
+---
+
+## 🏗️ Infrastructure Components
+
+### Virtual Private Cloud (VPC)
+- Multi-AZ deployment
+- Public and private subnets
+- NAT Gateway for outbound connectivity
+- Internet Gateway for public access
+
+### EC2 Instances
+- Auto-scaled application servers
+- Security groups with principle of least privilege
+- Instance profiles with appropriate IAM roles
+
+### EKS Cluster
+- Managed Kubernetes cluster
+- Worker nodes distributed across AZs
+- Auto-scaling node groups
+
+### Database (RDS)
+- Relational database for application data
+- Encryption at rest
+- Automatic backups
+
+### Security
+- IAM roles and policies
+- Security groups
+- Network ACLs
+- Key management (KMS)
+
+### Monitoring
+- CloudWatch dashboards
+- Alarms and notifications
+- Log aggregation
+
+---
+
+## ⚙️ CI/CD Integration
+
+This repository integrates with CI/CD pipelines through **GitHub Actions**. The workflow includes:
+
+- **Terraform Format and Validation**: Ensures code follows best practices
+- **Terraform Security Scanning**: Uses `tfsec` and `checkov` to identify security issues
+- **Terraform Plan**: Generates and validates execution plan
+- **Terraform Apply**: Applies changes to infrastructure (on `main` branch only)
+
+---
+
+## 🧪 Example GitHub Actions Workflow
+
+Example: `.github/workflows/terraform.yml`
+
+```yaml
+name: "Terraform CI/CD"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.x
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Security Scan
+        uses: aquasecurity/tfsec-action@v1.0.0
+
+      - name: Terraform Plan
+        run: terraform plan -var-file=environments/dev/vpc.tfvars
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -var-file=environments/dev/vpc.tfvars -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
