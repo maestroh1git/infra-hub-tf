@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket         = "trila-infra-bucket"
     key            = "trila-backend/terraform.tfstate"
-    region         = "us-west-2"
+    region         = "us-east-2"
     dynamodb_table = "trila-backend-state-locks"
     encrypt        = true
   }
