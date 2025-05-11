@@ -1,3 +1,4 @@
+# Variable definitions
 variable "tags" {
   default     = {}
   type        = map(string)
@@ -21,10 +22,18 @@ variable "cost_center" {
 
 variable "application" {
   type        = string
-  description = "Name of the application"
+  description = "Name of application"
 }
 
-variable "iam_policy_json_file" {
+# Project name variable (already used in the original code)
+variable "project_name" {
   type        = string
-  description = "Name of the json file"
+  description = "Name of the project"
+}
+
+# Common tags variable (already used in the original code)
+variable "common_tags" {
+  type        = map(string)
+  description = "Common tags to apply to all resources"
+  default     = {}
 }
