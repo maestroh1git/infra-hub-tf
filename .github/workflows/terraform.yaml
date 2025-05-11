@@ -29,6 +29,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
+    - name: Change to Terraform directory
+      run: cd environments/dev  # Navigate to the 'dev' environment directory
+
     - name: Initialize Terraform
       run: terraform init -input=false
 
