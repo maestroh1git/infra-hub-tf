@@ -5,7 +5,7 @@ resource "aws_vpc_endpoint" "s3" {
   vpc_endpoint_type  = "Interface"
 
   subnet_ids         = concat(
-    aws_subnet.platform[*].id
+    aws_subnet.app[*].id
   )
   tags = merge(
   {
@@ -26,7 +26,7 @@ resource "aws_vpc_endpoint" "secrets_manager" {
   vpc_endpoint_type  = "Interface"
 
   subnet_ids         = concat(
-    aws_subnet.platform[*].id
+    aws_subnet.app[*].id
   )
   tags = merge(
   {
@@ -47,7 +47,7 @@ resource "aws_vpc_endpoint" "cloudwatch_logs" {
   vpc_endpoint_type  = "Interface"
 
   subnet_ids         = concat(
-    aws_subnet.platform[*].id
+    aws_subnet.app[*].id
   )
   tags = merge(
   {
