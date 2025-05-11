@@ -324,12 +324,6 @@ resource "aws_iam_instance_profile" "ec2_profile" {
   role = aws_iam_role.ec2_role.name
 }
 
-# Attach Lambda policy to Lambda role
-resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
-  role       = aws_iam_role.lambda_role.name
-  policy_arn = aws_iam_policy.lambda_policy.arn
-}
-
 # Role for ALB logging
 resource "aws_iam_role" "alb_role" {
   name = "${var.project_name}-${var.environment}-alb-role"
