@@ -30,8 +30,20 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Make Terraform script executable
-      run: chmod +x $TERRAFORM_SCRIPT
+    - name: Verify script location and permissions
+      run: |
+        echo "Checking if the script exists and is executable"
+        ls -l $TERRAFORM_SCRIPT  # List the file to check permissions
+        if [ ! -f "$TERRAFORM_SCRIPT" ]; then
+          echo "Error: Script file $TERRAFORM_SCRIPT does not exist."
+          exit 1
+        fi
+        if [ ! -x "$TERRAFORM_SCRIPT" ]; then
+          echo "Error: Script file $TERRAFORM_SCRIPT is not executable."
+          exit 1
+        fi
 
     - name: Run Terraform script
-      run: $TERRAFORM_SCRIPT
+      run: |
+        echo "Running the Terraform script: $TERRAFORM_SCRIPT"
+        ./$TERRAFORM_SCRIPT
