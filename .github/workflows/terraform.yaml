@@ -8,6 +8,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
+  TERRAFORM_DIR: environments/dev  # Setting the directory path as an environment variable
 
 jobs:
   terraform:
@@ -29,17 +30,18 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Change to Terraform directory
-      run: cd Trila-infra/environments/dev  # Navigate to the 'dev' environment directory
-
     - name: Initialize Terraform
+      working-directory: ${{ env.TERRAFORM_DIR }}
       run: terraform init -input=false
 
     - name: Validate Terraform configuration
+      working-directory: ${{ env.TERRAFORM_DIR }}
       run: terraform validate
 
     - name: Run Terraform plan
+      working-directory: ${{ env.TERRAFORM_DIR }}
       run: terraform plan -out=tfplan.out
 
     - name: Apply Terraform plan
+      working-directory: ${{ env.TERRAFORM_DIR }}
       run: terraform apply -auto-approve tfplan.out
