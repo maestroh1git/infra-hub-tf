@@ -1,0 +1,67 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.88.4
+    hooks:
+      - id: terraform_fmt
+        name: Terraform Format
+        description: Rewrites all Terraform files to canonical format
+        
+      - id: terraform_validate
+        name: Terraform Validate
+        description: Validates all Terraform files
+        args:
+          - --hook-config=--retry-once-with-cleanup=true
+        
+      - id: terraform_tfsec
+        name: Terraform Security Scan (tfsec)
+        description: Static analysis of Terraform code for security issues
+        args:
+          - --args=--minimum-severity=MEDIUM
+        
+      - id: terraform_docs
+        name: Terraform Docs
+        description: Generate documentation from Terraform modules
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim Trailing Whitespace
+        description: Trims trailing whitespace
+        
+      - id: end-of-file-fixer
+        name: Fix End of Files
+        description: Ensures files end with a newline
+        
+      - id: check-yaml
+        name: Check YAML
+        description: Checks YAML files for syntax errors
+        args: ['--unsafe']
+        
+      - id: check-added-large-files
+        name: Check for Large Files
+        description: Prevents giant files from being committed
+        args: ['--maxkb=1000']
+        
+      - id: check-merge-conflict
+        name: Check for Merge Conflicts
+        description: Checks for files that contain merge conflict strings
+        
+      - id: detect-private-key
+        name: Detect Private Keys
+        description: Detects presence of private keys
+
+  - repo: https://github.com/bridgecrewio/checkov
+    rev: 3.2.1
+    hooks:
+      - id: checkov
+        name: Checkov Security Scan
+        description: Scans Terraform for security and compliance issues
+        args:
+          - --quiet
+          - --framework=terraform
+          - --skip-check=CKV_AWS_79  # Skip specific checks if needed
