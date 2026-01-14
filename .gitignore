@@ -15,10 +15,15 @@ crash.log
 #
 # example.tfvars
 
+# Ignore sensitive tfvars files (containing secrets, credentials, etc.)
+*secret*.tfvars
+*secrets*.tfvars
+*credential*.tfvars
+*password*.tfvars
 
-# Ignore all .tfvars files
-*.tfvars
-*.tfvars.json
+# Allow environment-specific tfvars (these should be in version control)
+!environments/**/*.tfvars
+!environments/**/*.tfvars.json
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
