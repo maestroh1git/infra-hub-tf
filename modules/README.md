@@ -3,15 +3,15 @@ You're accessing sensitive and proprietary product information belonging to Fobe
 Protect our innovations—your responsibility matters.
 
 ```md
-# Trila Technical Documentation & Team ReadMe
+# maestrohwithit Technical Documentation & Team ReadMe
 
-Welcome to the Trila MVP Repository – powering the next generation of **micro-smart real estate** across the globe with a focus on **fractional ownership**, **Zero-Up properties**, **AI-assisted booking**, and **DeFi-based payments**.
+Welcome to the maestrohwithit MVP Repository – powering the next generation of **micro-smart real estate** across the globe with a focus on **fractional ownership**, **Zero-Up properties**, **AI-assisted booking**, and **DeFi-based payments**.
 
 ---
 
 ## Overview
 
-**Trila** is a Web3-enabled, AI-assisted real estate platform designed for:
+**maestrohwithit** is a Web3-enabled, AI-assisted real estate platform designed for:
 - **Fractional investors** (Fractioners)
 - **Zero-up owners**
 - **Co-hosts & Agents**
@@ -31,7 +31,7 @@ The MVP represents the **foundation** of our global platform rollout.
 | **Zero-Up Ownership**              | Start without upfront capital |
 | **Fractional Ownership**           | Buy micro-units of rental properties |
 | **Developer Onboarding**           | Multifmily developments portfolios for early-stage funding |
-| **Trila Pay (Tripay)**             | DeFi & crypto-friendly payment rails (Stripe, Tripay, PayPal) |
+| **maestrohwithit Pay (Tripay)**             | DeFi & crypto-friendly payment rails (Stripe, Tripay, PayPal) |
 | **Investor Corner**                | SAFE investment, pitch deck, ROI calculator |
 | **City Discovery & STR Explorer**  | Geo-targeted listings and investment maps |
 | **Wallet & Portfolio Tracker**     | Track income, rent, and yield from investments |
@@ -75,7 +75,7 @@ The MVP represents the **foundation** of our global platform rollout.
 ## Project Structure
 
 ```
-/trila-mvp
+/maestrohwithit-mvp
 │
 ├── /frontend         → Next.js web app
 ├── /backend          → Node + Express API
@@ -136,7 +136,7 @@ The MVP represents the **foundation** of our global platform rollout.
 
 ```bash
 # Clone the repo
-git clone https://github.com/trila-usa/trila-mvp.git
+git clone https://github.com/maestrohwithit-usa/maestrohwithit-mvp.git
 
 # Frontend
 cd frontend && npm install && npm run dev
@@ -160,14 +160,14 @@ cd backend && npm install && npm run start
 
 ## Legal & Licensing
 
-All contents © 2025 **Trila Inc.**  
+All contents © 2025 **maestrohwithit Inc.**  
 See `/docs/legal/` for SAFE templates, land contracts, co-hosting agreements, and KYC terms.
 
 ---
 
 ## PRD Flow - Overview
 
-This section outlines the **functional and technical requirements** of the Trila backend MVP to ensure feature completeness and system scalability.
+This section outlines the **functional and technical requirements** of the maestrohwithit backend MVP to ensure feature completeness and system scalability.
 
 ### Core Modules & Use Cases
 
@@ -180,7 +180,7 @@ This section outlines the **functional and technical requirements** of the Trila
 | **Zero-Up Program Flow** | Register units for Airbnb-type revenue generation without ownership                       | Zero-Up Owners       |
 | **Booking Integration**  | Short-term rental booking engine (Trimo AI + manual mode)                                 | Renters              |
 | **Payment Processing**   | Stripe/Tripay/PayPal webhook handling, fund escrow, investor payouts                      | All Investors        |
-| **Wallet Management**    | Track income/yield, payout wallet linking (crypto/fiat), internal Trila wallet            | All                  |
+| **Wallet Management**    | Track income/yield, payout wallet linking (crypto/fiat), internal maestrohwithit wallet            | All                  |
 | **Developer Portfolio**  | Landed portfolio registration (hidden), project stages (land > development > STR assets)  | Developers           |
 | **AI Services (Trimo)**  | Booking assistant, investment onboarding, property questions (LangChain + OpenAI)         | All                  |
 | **Notifications System** | Email, in-app, and push notifications for transactions, updates, ROI, KYC changes         | All                  |
