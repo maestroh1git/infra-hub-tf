@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "trila-infra-bucket"
-    key            = "trila-backend/terraform.tfstate"
+    bucket         = "maestrohwithit-infra-bucket"
+    key            = "maestrohwithit-backend/terraform.tfstate"
     region         = "us-east-2"
-    dynamodb_table = "trila-backend-state-locks"
+    dynamodb_table = "maestrohwithit-backend-state-locks"
     encrypt        = true
   }
 }
