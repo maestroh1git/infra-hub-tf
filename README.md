@@ -1,8 +1,8 @@
 # maestrohwithit Infrastructure
 
-![GitHub last commit](https://img.shields.io/github/last-commit/maestrohwithit-USA/maestrohwithit-infra)
-![GitHub issues](https://img.shields.io/github/issues/maestrohwithit-USA/maestrohwithit-infra)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/maestrohwithit-USA/maestrohwithit-infra)
+![GitHub last commit](https://img.shields.io/github/last-commit/maestroh1git/infra-hub-tf)
+![GitHub issues](https://img.shields.io/github/issues/maestroh1git/infra-hub-tf)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/maestroh1git/infra-hub-tf)
 ![Terraform](https://img.shields.io/badge/Terraform-1.6.6-blue)
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
 
@@ -520,8 +520,8 @@ terraform init -reconfigure
 
 ### Getting Help
 
-- 📧 **Email**: devops@maestrohwithit.com
-- 🎫 **Issues**: [GitHub Issues](https://github.com/maestrohwithit-USA/maestrohwithit-infra/issues)
+- 📧 **Email**: hello@maestrohwithit.africa
+- 🎫 **Issues**: [GitHub Issues](https://github.com/maestroh1git/infra-hub-tf/issues)
 - 📖 **Docs**: Check the `docs/` directory
 
 ## 🤝 Contributing
@@ -543,12 +543,12 @@ Types: feat, fix, docs, style, refactor, test, chore
 
 ## 📄 License
 
-Copyright © 2024 maestrohwithit Inc. All rights reserved.
+Copyright © 2026 maestrohwithit Inc. All rights reserved.
 
 ## 🙏 Support
 
 For support and questions:
-- **Email**: support@maestrohwithit.com
+- **Email**: hello@maestrohwithit.africa
 - **Slack**: #infrastructure channel
 - **On-Call**: PagerDuty rotation
 
@@ -556,4 +556,4 @@ For support and questions:
 
 **Built with ❤️ by the maestrohwithit DevOps Team**
 
-Last Updated: 2024-01-20
+Last Updated: 2026-01-20
